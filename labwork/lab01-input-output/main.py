@@ -3,6 +3,7 @@
 # [Your Name]
 
 # Start writing your code below.
+print("Hello world")
 # Click the "Run" button (or run this file in the terminal with: python main.py)
 # to see your output in the terminal window.
 # Good luck! You can do this - please don't use any AI tools to do this assignment. 
