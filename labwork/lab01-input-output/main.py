@@ -1,6 +1,8 @@
 # DEV 108 Lab Activity 1
-# [Today's Date]
-# [Your Name]
+
+# [7/9/2026]
+# [Magdalena Hernandez]
+
 
 # Start writing your code below.
 print("Hello world")
