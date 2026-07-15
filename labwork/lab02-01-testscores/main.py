@@ -10,7 +10,6 @@ print()
 print("Enter 3 test scores")
 print("======================")
 
-
 score1 = int(input("Enter test score: "))
 score2 = int(input("Enter test score: "))
 score3 = int(input("Enter test score: "))
