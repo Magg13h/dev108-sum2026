@@ -6,35 +6,43 @@ def display_welcome():
     print("")
 
 def get_scores():
-    score_total = 0
-    counter = 0
+    scores = []
+
     while True:
         score = input("Enter test score: ")
+
         if score == "x":
-            return  score_total, counter
+            return scores
+
+        score = int(score)
+
+        if score >= 0 and score <= 100:
+            scores.append(score)
         else:
-            score = int(score)
-            if score >= 0 and score <= 100:
-                score_total += score
-                counter += 1 
-            else:
-                print("Test score must be from 0 through 100. " +
+            print("Test score must be from 0 through 100. " +
                       "Score discarded. Try again.")
 
-def process_scores(score_total, count):
+def process_scores(scores):
     # calculate average score
+    score_total = 0
+
+    for score in scores:
+        score_total += score
+
+    count = len(scores)
+
     average = score_total / count
                 
     # format and display the result
     print()
     print("Score total:       ", score_total)
-    print("Number of Scores:  ", count)
+    print("Number of Score:  ", count)
     print("Average Score:     ", average)
 
 def main():
     display_welcome()
-    score_total, count = get_scores()
-    process_scores(score_total, count)
+    scores = get_scores()
+    process_scores(scores)
     print("")
     print("Bye!")
 
