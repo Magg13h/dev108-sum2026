@@ -25,32 +25,33 @@ def get_scores():
 def process_scores(scores):
     # calculate average score
     score_total = 0
-    low = None
-    high = None 
 
     for score in scores:
         score_total += score
-        if low is None or score < low:
-            low = score
-        if high is None or score > high:
-            high = score
+
     count = len(scores)
     average = score_total / count
+    low = min(scores)
+    high = max(scores)
     sorted_scores = sorted(scores)
-    mid = count // 2
+
     if count % 2 == 1:
-        median = sorted_scores[mid]
+        median = sorted_scores[count // 2]
     else:
-        median = (sorted_scores[mid - 1] + sorted_scores[mid]) / 2
+        middle1 = sorted_scores[(count // 2) - 1]
+        middle2 = sorted_scores[count // 2]
+        median = (middle1 + middle2) / 2
+
+    results = (score_total, count, average, low, high, median)
                 
     # format and display the result
     print()
-    print("Score total:       ", score_total)
-    print("Number of Score:  ", count)
-    print("Average Score:     ", average)
-    print("Low score:         ", low)
-    print("High Score:        ", high)
-    print("Median Score:      ", median)
+    print("Score total:       ", results[0])
+    print("Number of Score:   ", results[1])
+    print("Average Score:     ", results[2])
+    print("Low score:         ", results[3])
+    print("High Score:        ", results[4])
+    print("Median Score:      ", results[5])
 
 def main():
     display_welcome()
