@@ -5,10 +5,27 @@ import csv
 # create a filename for our .csv file
 filename = "trips.csv"
 
-def write_trips(trips):
-    with open(filename, "w", newline="") as file:
+def write_trips(trip):
+    print(trip)
+    with open(filename, "a", newline="") as file:
         writer = csv.writer(file)
-        writer.writerows(trips)
+        writer.writerow(trip)
+
+def read_trips():
+    trips = []
+    with open(filename, newline="") as file:
+        reader = csv.reader (file)
+        for row in reader:
+            trips.append(row)
+    return trips
+
+def list_trips(trips):
+    print("Distance\tGallons\t\tMPG")
+    for i in range(0, len(trips)):
+        trip = trips[i]
+        print(str(trip[0]) + "\t\t" + str(trip[1]) + "\t\t" + str(trip[2]))
+        print()
+
 
 def get_miles_driven():
     while True:
@@ -33,8 +50,8 @@ def main():
     print("The Miles Per Gallon application")
     print()
 
-    #create a placeholder list
-    trip = []
+    trips = read_trips()
+    list_trips(trips)
 
     more = "y"
     while more.lower() == "y":
@@ -45,14 +62,18 @@ def main():
         print("Miles Per Gallon:\t" + str(mpg))
         print()
 
+        
         #create a list for 3 values of this calculation
         trip = []
         trip.append(miles_driven)
         trip.append(gallons_used)
         trip.append(mpg)
         #now append this entire row to my trips list
-        trip.append(trip)
-        print(trip)
+        trips.append(trip)
+        #be sure to write this row of data before accepting more data
+        write_trips(trip)
+
+        list_trips(trips)
         
         more = input("More entries? (y or n): ")
     
