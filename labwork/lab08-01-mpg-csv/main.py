@@ -1,5 +1,15 @@
 ## Starting file for Exercise 7.1
 
+import csv
+
+# create a filename for our .csv file
+filename = "trips.csv"
+
+def write_trips(trips):
+    with open(filename, "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(trips)
+
 def get_miles_driven():
     while True:
         miles_driven = float(input("Enter miles driven :     "))                    
@@ -23,6 +33,9 @@ def main():
     print("The Miles Per Gallon application")
     print()
 
+    #create a placeholder list
+    trip = []
+
     more = "y"
     while more.lower() == "y":
         miles_driven = get_miles_driven()
@@ -31,6 +44,15 @@ def main():
         mpg = round((miles_driven / gallons_used), 2)
         print("Miles Per Gallon:\t" + str(mpg))
         print()
+
+        #create a list for 3 values of this calculation
+        trip = []
+        trip.append(miles_driven)
+        trip.append(gallons_used)
+        trip.append(mpg)
+        #now append this entire row to my trips list
+        trip.append(trip)
+        print(trip)
         
         more = input("More entries? (y or n): ")
     
